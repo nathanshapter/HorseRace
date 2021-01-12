@@ -8,6 +8,7 @@ TagManager:
   - greenHorse
   - yellowHorse
   - pinkHorse
+  - crowd
   layers:
   - Default
   - TransparentFX
