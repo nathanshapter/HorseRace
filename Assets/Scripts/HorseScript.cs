@@ -69,9 +69,9 @@ public class HorseScript : MonoBehaviour
         }
         
     }
-    public void HasWon()
+    public void BlueWon()
     {
-        agent.SetDestination(firstPlace.transform.position);
+        anim.SetBool("iWin", true);
 
     }
     public void SecondPlace()

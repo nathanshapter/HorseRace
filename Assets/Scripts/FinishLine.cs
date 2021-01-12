@@ -5,26 +5,34 @@ using UnityEngine.AI;
 
 public class FinishLine : MonoBehaviour
 {
-    Vector3 firstPosition;
-    Vector3 secondPosition;
-    Vector3 thirdPosition;
-
     public Transform firstTTarget;
     
     public List<GameObject> horseList = new List<GameObject>();
 
     HorseScript hs;
-
-
-
+    crowdSingle cs;
     public GameObject firstPlace;
+
+    /*
+    bool gameStarted = false;
+    bool blueWon = false;
+    bool blueLost = false;
+    bool greenWon = false;
+    bool greemLost = false;
+    bool yellowWon = false;
+    bool yellowLost = false;
+    bool pinkWon = false;
+    bool pinkLost = false;
+    */
+
+
+
 
     void Start()
     {
         hs = GetComponent<HorseScript>();
-         firstPosition = new Vector3(2.84f, 6.3f, 125.31f);
-        secondPosition = new Vector3(8.1f, 6.07f, 125.31f);
-        thirdPosition = new Vector3(-2.39f, 6.28f, 125.31f);
+        cs = GetComponent<crowdSingle>();
+      
     }
 
     // Update is called once per frame
@@ -40,22 +48,24 @@ public class FinishLine : MonoBehaviour
 
         horseList[0].GetComponent<GameObject>();
 
+
+
         if(horseList[0] != null)
         {
             Debug.Log(horseList[0] + " has won!");
-            horseList[0].transform.position = (firstPosition);
+         
            
         }
         if(horseList[1] != null)
         {
             Debug.Log(horseList[1] + " has come in Second Place!");
-            horseList[1].transform.position = (firstPosition);
+           
            
         }
         if(horseList[2] != null)
         {
             Debug.Log(horseList[2] + " has come in Third Place");
-            horseList[2].transform.position = (thirdPosition);
+            
             
         }
         if(horseList[3] != null)
@@ -67,20 +77,5 @@ public class FinishLine : MonoBehaviour
             
     }
    
-    void FirstPlace()
-    {
-
-    }
-    void SecondPlace()
-    {
-       
-    }
-    void ThirdPlace()
-    {
-
-    }
-    void FourthPlace()
-    {
-
-    }
+  
 }
