@@ -5,37 +5,33 @@ using UnityEngine;
 public class crowdSingle : MonoBehaviour
 {
     Animator anim;
+    
+    
+    
+
     void Start()
     {
-       
-        float jumpSpeed = Random.Range(1f, 3f);
+             
         anim = GetComponent<Animator>();
-        
-      
+        anim.SetBool("gameStarted", true);
+       
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        anim.SetBool("gameStarted", true);
+        if(Random.Range(1,10) <= 1)
+        {
+            anim.SetBool("playNext", true);
+            Invoke("playNextFalse", 2);
+        }
+
+
         
     }
-    public void BlueWon()
+    void playNextFalse()
     {
-        anim.SetBool("blueWon", true);
+        anim.SetBool("playNext", false);
+    }
 
-        Debug.Log("any horse has won");
-    }
-    public void GreenWon()
-    {
-        Debug.Log("any horse has won");
-    }
-    public void YellowWon()
-    {
-        Debug.Log("any horse has won");
-    }
-    public void PinkWon()
-    {
-        Debug.Log("any horse has won");
-    }
 }

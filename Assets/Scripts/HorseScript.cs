@@ -21,6 +21,7 @@ public class HorseScript : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        agent.enabled = false;
         navSpeed = agent.speed = Random.Range(minSpeed, maxSpeed);
         anim = GetComponent<Animator>();
         anim.SetBool("gameHasStarted", true );

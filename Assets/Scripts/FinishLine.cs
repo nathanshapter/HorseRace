@@ -9,30 +9,21 @@ public class FinishLine : MonoBehaviour
     
     public List<GameObject> horseList = new List<GameObject>();
 
-    HorseScript hs;
-    crowdSingle cs;
-    public GameObject firstPlace;
-
-    /*
-    bool gameStarted = false;
-    bool blueWon = false;
-    bool blueLost = false;
-    bool greenWon = false;
-    bool greemLost = false;
-    bool yellowWon = false;
-    bool yellowLost = false;
-    bool pinkWon = false;
-    bool pinkLost = false;
-    */
-
-
-
-
-    void Start()
-    {
-        hs = GetComponent<HorseScript>();
-        cs = GetComponent<crowdSingle>();
+        
+    public ParticleSystem winner;
+    public ParticleSystem[] numerousConfetti; // drag into inspector
+    bool firstPlace = false;
       
+
+       void Start()
+    {
+   
+        winner.Stop();
+        foreach (ParticleSystem i in numerousConfetti)
+        {
+            i.Stop();
+        }
+
     }
 
     // Update is called once per frame
@@ -48,13 +39,27 @@ public class FinishLine : MonoBehaviour
 
         horseList[0].GetComponent<GameObject>();
 
-
-
         if(horseList[0] != null)
         {
             Debug.Log(horseList[0] + " has won!");
-         
-           
+            winner.Play();
+            
+
+            if (!firstPlace)
+            {
+                foreach (ParticleSystem i in numerousConfetti)
+                {
+                    i.Play();
+                }
+                firstPlace = true;
+            }
+          
+            
+
+            
+                
+                
+            
         }
         if(horseList[1] != null)
         {
