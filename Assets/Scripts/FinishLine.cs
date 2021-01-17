@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class FinishLine : MonoBehaviour
 {
+    HorseScript hs;
     public Transform firstTTarget;
     
     public List<GameObject> horseList = new List<GameObject>();
@@ -13,8 +14,8 @@ public class FinishLine : MonoBehaviour
     public ParticleSystem winner;
     public ParticleSystem[] numerousConfetti; // drag into inspector
     bool firstPlace = false;
-      
 
+    public AudioSource startShot;
        void Start()
     {
    
@@ -23,13 +24,14 @@ public class FinishLine : MonoBehaviour
         {
             i.Stop();
         }
-
+        startShot = GetComponent<AudioSource>();
+        Invoke("startGame", 15f);
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+        
     }
 
    
@@ -82,5 +84,9 @@ public class FinishLine : MonoBehaviour
             
     }
    
-  
+  void startGame()
+    {
+        startShot.Play();
+        hs.agent.enabled = true;
+    }
 }

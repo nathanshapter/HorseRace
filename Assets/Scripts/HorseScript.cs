@@ -22,18 +22,21 @@ public class HorseScript : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         agent.enabled = false;
+
         navSpeed = agent.speed = Random.Range(minSpeed, maxSpeed);
         anim = GetComponent<Animator>();
-        anim.SetBool("gameHasStarted", true );
+        
 
 
-        //UnityEditor.AI.NavMeshBuilder.BuildNavMesh();
-       
+     
+
+        Invoke("enableAgent", 15f);
     }
 
     // Update is called once per frame
     void Update()
     {
+
         SetDestination();
 
        
@@ -70,22 +73,10 @@ public class HorseScript : MonoBehaviour
         }
         
     }
-    public void BlueWon()
+  void enableAgent()
     {
-        anim.SetBool("iWin", true);
-
-    }
-    public void SecondPlace()
-    {
-
-    }
-    public void ThirdPlace()
-    {
-
-    }
-    public void FourthPlace()
-    {
-
+        agent.enabled = true;
+        anim.SetBool("gameHasStarted", true);
     }
 
 }
